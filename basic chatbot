@@ -1,0 +1,26 @@
+def get_reply(message):
+    message = message.lower().strip()
+
+    if message in ["hello", "hi", "hey"]:
+        return "Hi!"
+    elif message in ["how are you", "how are you?"]:
+        return "I'm fine, thanks!"
+    elif message in ["what is your name", "who are you"]:
+        return "I'm a simple Python chatbot."
+    elif message in ["bye", "goodbye", "exit"]:
+        return "Goodbye!"
+    else:
+        return "Sorry, I didn't understand that."
+
+def start_chat():
+    print("Chatbot started! Type 'bye' to exit.\n")
+
+    while True:
+        user_input = input("You: ")
+        reply = get_reply(user_input)
+        print("Bot:", reply)
+
+        if user_input.lower().strip() in ["bye", "goodbye", "exit"]:
+            break
+
+start_chat()
