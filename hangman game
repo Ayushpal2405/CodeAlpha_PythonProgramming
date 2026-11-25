@@ -1,0 +1,45 @@
+import random
+
+words = ["apple", "tiger", "chair", "music", "train"]
+word = random.choice(words)
+
+guessed = []
+tries = 6
+
+print("Hangman Game")
+
+while tries > 0:
+    display = ""
+    for ch in word:
+        if ch in guessed:
+            display += ch + " "
+        else:
+            display += "_ "
+
+    print("\nWord:", display)
+    print("Tries left:", tries)
+
+    if "_" not in display:
+        print("You guessed it! The word was", word)
+        break
+
+    guess = input("Enter a letter: ").lower()
+
+    if len(guess) != 1 or not guess.isalpha():
+        print("Enter only one letter.")
+        continue
+
+    if guess in guessed:
+        print("Already guessed that.")
+        continue
+
+    guessed.append(guess)
+
+    if guess in word:
+        print("Correct!")
+    else:
+        tries -= 1
+        print("Wrong!")
+
+if tries == 0:
+    print("\nGame over! The word was", word)
